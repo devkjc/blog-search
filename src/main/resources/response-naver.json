@@ -1,0 +1,88 @@
+{
+  "lastBuildDate": "Sun, 19 Mar 2023 15:38:19 +0900",
+  "total": 64832,
+  "start": 1,
+  "display": 10,
+  "items": [
+    {
+      "title": "JDK) 다운로드 간단하게 설치하는 방법!!!(<b>java 17<\/b>)",
+      "link": "https:\/\/blog.naver.com\/bbbisskk2\/222977796580",
+      "description": "현재는 JAVA 19 버전과 <b>JAVA 17<\/b> 버전을 다운받을 수 있다고 나오네요! 저는 같이 하는 팀원이 이미 <b>JAVA17<\/b> 버전을 사용하고 있다하여, 혹여나 버전 충돌같은 문제로 고생할까봐.. <b>JAVA17<\/b> 로 통일 해 주려... ",
+      "bloggername": "다 지나가는 일 모음집",
+      "bloggerlink": "blog.naver.com\/bbbisskk2",
+      "postdate": "20230107"
+    },
+    {
+      "title": "[firstcoding] JDK17 설치 ( 윈도우에 jdk설치, <b>Java17<\/b>... ",
+      "link": "https:\/\/blog.naver.com\/firstcoding\/223001590371",
+      "description": "다운로드 페이지에 접속하면 Java19 와 <b>Java 17<\/b> 버전을 다운로드 할수 있는 메뉴들이 보입니다.... 현재 여러분들의 컴퓨터에 설치된 Java의 버전이 <b>Java17<\/b>.0.6 이라는것을 확인할 수 있습니다. winsdows... ",
+      "bloggername": "firstcoding : 코딩 시작하기",
+      "bloggerlink": "blog.naver.com\/firstcoding",
+      "postdate": "20230201"
+    },
+    {
+      "title": "<b>Java<\/b> 11부터 <b>17<\/b> 버전까지 추가된 기능",
+      "link": "https:\/\/blog.naver.com\/clevekim\/223039784452",
+      "description": "System.out.println(str); } \/\/ Java 16 버전 if (obj instanceof String str) { System.out.println(str); } <b>Java 17<\/b> 1. 새로운 인스턴스 생성 방법 <b>Java 17<\/b>에서는 instanceof 키워드를 더욱... ",
+      "bloggername": "행복한 파랑새",
+      "bloggerlink": "blog.naver.com\/clevekim",
+      "postdate": "20230309"
+    },
+    {
+      "title": "<b>JAVA<\/b> #<b>17<\/b>. java 인스턴스와 정적 멤버, 지정예약어... ",
+      "link": "https:\/\/blog.naver.com\/been_monolid\/222441180194",
+      "description": "<b>JAVA<\/b> #<b>17<\/b>. (1) java 인스턴스와 정적 멤버 클래스로부터 객체(인스턴스)는 여러 개가 만들어질 수 있다. =한 가지 클래스를 참조해서 객체를 여러 개 만들 수 있다. 이 경우, 클래스 멤버들을 객체마다 모두... ",
+      "bloggername": "또방이 블로그",
+      "bloggerlink": "blog.naver.com\/been_monolid",
+      "postdate": "20210727"
+    },
+    {
+      "title": "[자바(<b>java<\/b>-<b>17<\/b>)] 2차 방정식의 해, 근을 구해보자.",
+      "link": "https:\/\/blog.naver.com\/dotherightthing-\/222980865180",
+      "description": "import <b>java<\/b>.util.Scanner; public class HomeworkAtHome { public static void main(String args[]) { Scanner scan = new Scanner(System.in); System.out.println(&quot;a*x^2+b*x+c의 근을 구해보자! &quot; ); System.out.print(&quot;x^2 의 계수는... ",
+      "bloggername": "DTRT",
+      "bloggerlink": "blog.naver.com\/dotherightthing-",
+      "postdate": "20230111"
+    },
+    {
+      "title": "[JAVA] java8 ,java11, <b>java17<\/b>그리고 JDK와 SE",
+      "link": "https:\/\/blog.naver.com\/sobrightlf\/222578687036",
+      "description": "현재 최신 <b>Java17<\/b> 2021년 9월 14일, (java11출시이후 3년 뒤) Java의 최신 버전인 <b>Java17<\/b>과 Oracle_JDK17을 정식으로 공개하였다. 기존의 버전 (12~16)과는 다르게 세번째 LTS버전이 출시된것이다.... ",
+      "bloggername": "Gloom 개발블로그",
+      "bloggerlink": "blog.naver.com\/sobrightlf",
+      "postdate": "20211125"
+    },
+    {
+      "title": "[JAVA] 자바\/jdk 설치\/삭제 하는 방법 (<b>Java 17<\/b> 다운로드... ",
+      "link": "https:\/\/blog.naver.com\/gddbwls\/222548378442",
+      "description": "[ 설치 위치 확인하기 ] 내PC -&gt; C드라이브 -&gt; Program Files -&gt; <b>Java<\/b> -&gt;jdk-<b>17<\/b>.0.1클릭 주소 클릭하여 복사해 두기 C:\\Program Files\\<b>Java<\/b>\\jdk-<b>17<\/b>.0.1 에 JDK가 설치되었다. [ 환경 변수 설정 ] (환경변수란... ",
+      "bloggername": "Remind",
+      "bloggerlink": "blog.naver.com\/gddbwls",
+      "postdate": "20211026"
+    },
+    {
+      "title": "[<b>JAVA<\/b>] <b>17<\/b>-2.스트림 결합",
+      "link": "https:\/\/blog.naver.com\/cocochao\/222954855196",
+      "description": "import <b>java<\/b>.io.DataInputStream; import <b>java<\/b>.io.FileInputStream; import <b>java<\/b>.io.IOException; public class StreamConnect { public static void main(String[] args) throws IOException { FileInputStream fileSt = new FileInputStream... ",
+      "bloggername": "Exit",
+      "bloggerlink": "blog.naver.com\/cocochao",
+      "postdate": "20221213"
+    },
+    {
+      "title": "<b>17<\/b>. 간단한 <b>Java<\/b> 프로그램을 작성해 보자!!!",
+      "link": "https:\/\/blog.naver.com\/nspro0318\/223004309691",
+      "description": "지난번에는 <b>Java<\/b> 프로그래밍을 할 수 있는 편집기 중의 하나인 [ Elcipse IDE ]를 다운로드하고 설치를 하였습니다 https:\/\/blog.naver.com\/nspro0318\/223004137606 이번에는 간단한 <b>Java<\/b> 파일을 만들어... ",
+      "bloggername": "서울꺼벙천사와 함께...",
+      "bloggerlink": "blog.naver.com\/nspro0318",
+      "postdate": "20230203"
+    },
+    {
+      "title": "Is <b>Java 17<\/b> free again?",
+      "link": "https:\/\/blog.naver.com\/treatiu92\/222956232979",
+      "description": "Is <b>Java 17<\/b> free again? [Pam]: The announcement indicates that <b>Java 17<\/b> and later are free under the new ?�Oracle No-Fee Terms and Conditions??(NFTC) license which allows for ?�running the Program for Your own... ",
+      "bloggername": "코",
+      "bloggerlink": "blog.naver.com\/treatiu92",
+      "postdate": "20221215"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "documents": [
+    {
+      "blogname": "코딩하는 지니",
+      "contents": "♨️ \u003cb\u003e자바\u003c/b\u003e 개발 도구 설치 방법에 대해서 알아보겠습니다. \u003cb\u003eJava\u003c/b\u003e\u003cb\u003e17\u003c/b\u003e은 LTS(Long Term Support : 장기 지원) 릴리즈로 1년 후까지 기술 지원 및 버그를 개선한 서비스를 제공받을 수 있습니다. 업데이트 버전을 꾸준히 제공받을 수 있어 최소 2024년 9월까지 업데이트를 받게 됩니다. 저는 개발 및 학습용으로 사용하기 위해...",
+      "datetime": "2023-02-25T19:16:02.000+09:00",
+      "thumbnail": "https://search4.kakaocdn.net/argon/130x130_85_c/8DyIW4s5xXn",
+      "title": "[\u003cb\u003eJava\u003c/b\u003e] 차근차근 \u003cb\u003eJava\u003c/b\u003e 설치하기 (JDK\u003cb\u003e17\u003c/b\u003e, Window 11)",
+      "url": "http://yungenie.tistory.com/11"
+    },
+    {
+      "blogname": "오늘부터 개발자",
+      "contents": "과 AutoUnBoxing ㄴ JDK 1.5부터는 박싱과 언박싱이 필요한 상황에서 \u003cb\u003e자바\u003c/b\u003e 컴파일러가 자동으로 처리해줌 ㄴ 이렇게 자동화된 박싱과 언박싱을 오토 박싱...언박싱, 오토 박싱과 오토 언박싱의 차이 Integer num = new Integer(\u003cb\u003e17\u003c/b\u003e); //박싱 int n = num.intValue(); //언박싱 System.out.println(n); Character ch = \u0026#39;X...",
+      "datetime": "2023-03-09T21:32:53.000+09:00",
+      "thumbnail": "https://search2.kakaocdn.net/argon/130x130_85_c/DDsPaYSDfu6",
+      "title": "\u003cb\u003eJava\u003c/b\u003e_\u003cb\u003e17\u003c/b\u003e일 차의 기록",
+      "url": "http://fromtodayit.tistory.com/31"
+    },
+    {
+      "blogname": "Shin._.Mallang",
+      "contents": "동작할 뿐더러, 내부에서는 해당 클래스를 상속하여 여러 클래스를 생성할 수 있기 때문에 훨씬 유연한 방법입니다. 🧐 모든 필드를 final로 선언한다 \u003cb\u003e자바\u003c/b\u003e 언어에서 final을 사용하면 값을 바꿀 수 없기 때문에, 명시적으로 값을 불변으로 만들 수 있습니다. 새로 생성된 인스턴스를 동기화 없이 다른 스레드에 전달...",
+      "datetime": "2023-02-23T18:16:25.000+09:00",
+      "thumbnail": "https://search3.kakaocdn.net/argon/130x130_85_c/IC8nBiJTc1N",
+      "title": "[Effective \u003cb\u003eJava\u003c/b\u003e] 아이템 \u003cb\u003e17\u003c/b\u003e - 변경 가능성을 최소화하라",
+      "url": "http://ttl-blog.tistory.com/1205"
+    },
+    {
+      "blogname": "CODO",
+      "contents": "알아야 함(상황에 맞게 변형 가능) 패턴의 틀에 갇힌 사고방식은 효율성이 낮은 프로그램을 생산 패턴은 사용하는 것보다 차용 한다고 생각해야 함 Model 2 \u003cb\u003eJava\u003c/b\u003e Logic과 JSP를 분리 출력부분만 JSP로 다룸 나머지 데이터 저장 및 \u003cb\u003eJAVA\u003c/b\u003e LOGIC부분은 \u003cb\u003ejava\u003c/b\u003e(class)로 다룸 MVC(Model View Controller) 패턴(Model 2의 기본...",
+      "datetime": "2023-02-23T17:01:01.000+09:00",
+      "thumbnail": "https://search2.kakaocdn.net/argon/130x130_85_c/8wB6jrXrXJC",
+      "title": "CODO Day\u003cb\u003e17\u003c/b\u003e_\u003cb\u003eJAVA\u003c/b\u003e_MVC(Model2/상속*)",
+      "url": "http://co-do.tistory.com/29"
+    },
+    {
+      "blogname": "dev.jay",
+      "contents": "다음 T줄에는 각각 두 정수 A와 B가 주어진다. A와 B는 1 이상, 1,000 이하이다. www.acmicpc.net 그래서 문제에서는 시간 초과가 날 수 있는 걸 대비해서 \u003cb\u003eJava\u003c/b\u003e의 경우 Scanner대신 BufferedReader를 사용하고, System.out.println 대신 BufferedWriter 사용을 권고하고 있다. Scanner를 사용하면 안풀리는 이유에...",
+      "datetime": "2022-12-30T15:48:39.000+09:00",
+      "thumbnail": "https://search4.kakaocdn.net/argon/130x130_85_c/CjzkOpCO3Gv",
+      "title": "[\u003cb\u003eJAVA\u003c/b\u003e] \u003cb\u003e17\u003c/b\u003e. BufferedReader / BufferWriter",
+      "url": "http://jay-ya.tistory.com/125"
+    },
+    {
+      "blogname": "고민 많은 개발자",
+      "contents": "해줘야 한다. 왠만한 exe 파일이 설정되어 있으므로 우리는 어떠판 exe 파일이 있는지를 검색해보도록 한다. (참고로 ec2에서 하는 과정이며 이미 나는 \u003cb\u003ejava\u003c/b\u003e \u003cb\u003e17\u003c/b\u003e을 설치한 상황이므로 나오는 것인지는 알 수 없다. 해당 코드를 입력해도 안나온다면 그다음 코드를 한번 입력해보길 권장한다. 삭제를 하고 확인해보고...",
+      "datetime": "2023-01-12T14:08:38.000+09:00",
+      "thumbnail": "https://search4.kakaocdn.net/argon/130x130_85_c/GyA2zTZ10Lv",
+      "title": "AWS EC2에서 프로젝트(스프링부트) 배포하는 방법 (ubuntu \u003cb\u003ejava\u003c/b\u003e \u003cb\u003e17\u003c/b\u003e설치)",
+      "url": "http://widm2240.tistory.com/19"
+    },
+    {
+      "blogname": "개발하는 송호두",
+      "contents": "개발 주기를 가진 버전이며 프리미엄 지원은 6개월만 가능하다고 한다. 그 이전 제품인 JDK\u003cb\u003e17\u003c/b\u003e은 개발 주기가 긴 LTS(Long Term Support) 버전으로 7년간 지원받을 수 있다고 한다. \u003cb\u003ejava\u003c/b\u003e\u003cb\u003e17\u003c/b\u003e부터는 m1도 지원해준다고 한다. 일단 나는 인텔노트북이 아니기에 가장 최신인 \u003cb\u003ejava\u003c/b\u003e\u003cb\u003e17\u003c/b\u003e을 설치해주기로 했다. 1. 오라클에서 \u003cb\u003e자바\u003c/b\u003e...",
+      "datetime": "2022-12-17T16:46:36.000+09:00",
+      "thumbnail": "https://search3.kakaocdn.net/argon/130x130_85_c/2SpWc0p1hJs",
+      "title": "맥북에어2(macOs) \u003cb\u003ejava\u003c/b\u003e\u003cb\u003e17\u003c/b\u003e 설치 및 다운로드",
+      "url": "http://willbedeveloper.tistory.com/31"
+    },
+    {
+      "blogname": "Loquens",
+      "contents": "갯수를 정확하게 모른다면 오류가 발생한다. 배열과는 달리 CF에서 제공하는 ArrayList는 몇 개의 값을 담을 수 있는지 지정할 필요가 없다 사용 시 import \u003cb\u003ejava\u003c/b\u003e.util.ArrayList를 선언 후 사용 package chapter_14; import \u003cb\u003ejava\u003c/b\u003e.util.ArrayList; public class _01_ArrayList { public static void main(String[] args...",
+      "datetime": "2023-02-04T20:31:40.000+09:00",
+      "thumbnail": "https://search2.kakaocdn.net/argon/130x130_85_c/D0FQYJcRP4s",
+      "title": "(\u003cb\u003eJava\u003c/b\u003e) Chapter\u003cb\u003e17\u003c/b\u003e. Collections Framework",
+      "url": "http://loquens.tistory.com/24"
+    },
+    {
+      "blogname": "코딩의 시작 - 홍's 코딩",
+      "contents": "\u003cb\u003ejava\u003c/b\u003e observer 패턴 이해하기 https://futurecreator.github.io/2018/06/04/\u003cb\u003ejava\u003c/b\u003e-observer-pattern/ 수년 전까지 대규모 애플리케이션은 수십 대의 서버 , 기가바이트의 데이터, 수초의 응답 시간, 몇 시간의 유지보수 시간 등의 특징을 가졌다. 오늘날에는 다음과 같은 적어도 세 가지 이유로 상황이 변하고 있다. 빅...",
+      "datetime": "2023-01-29T23:04:30.000+09:00",
+      "thumbnail": "https://search4.kakaocdn.net/argon/130x130_85_c/IpLQVPHwQoU",
+      "title": "Modern \u003cb\u003eJava\u003c/b\u003e Ch\u003cb\u003e17\u003c/b\u003e. Reactive Programming 이해하기",
+      "url": "http://hongs-coding.tistory.com/167"
+    },
+    {
+      "title": "[\u003cb\u003eJAVA\u003c/b\u003e] \u003cb\u003e자바\u003c/b\u003e 다운로드 및 환경 설정 하기 - \u003cb\u003eJava\u003c/b\u003e \u003cb\u003e17\u003c/b\u003e",
+      "url": "http://ijw9209.tistory.com/75",
+      "contents": "유저들이 사용할 수 있기 때문이다. JDK 설치 및 환경설정 1. Oracle 홈페이지 접속 및 \u003cb\u003eJAVA\u003c/b\u003e \u003cb\u003e17\u003c/b\u003e 다운로드 https://www.oracle.com/java/technologies/downloads/#java17 Download the Latest \u003cb\u003eJava\u003c/b\u003e LTS Free Subscribe to \u003cb\u003eJava\u003c/b\u003e SE and get the most comprehensive \u003cb\u003eJava\u003c/b\u003e support available, with 24/7 global access to...",
+      "blogname": "나태한 개발자에서 부지런한 개발자로",
+      "thumbnail": "https://search1.kakaocdn.net/argon/130x130_85_c/HnasB7HcEkH",
+      "datetime": "2022-10-28T00:23:15.000+09:00"
+    }
+  ],
+  "meta": {
+    "is_end": false,
+    "pageable_count": 800,
+    "total_count": 171995
+  }
+}
