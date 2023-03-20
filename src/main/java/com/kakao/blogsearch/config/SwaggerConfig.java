@@ -19,7 +19,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.kakao.blogsearch"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -27,10 +27,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("제목")
-                .description("설명")
+                .title("블로그 검색 API")
+                .description("카카오/네이버 블로그 검색 API")
                 .version(version)
-                .contact(new Contact("이름", "홈페이지 URL", "e-mail"))
                 .build();
     }
 

@@ -18,13 +18,6 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
-#key:
-#  kakao:
-#    Authorization: KakaoAK 367807fafdb0b33796e4fa9b9ff24a7c
-#      naver:
-#        X-Naver-Client-Id: pUmIYo1iCMsHV4yLaAt9
-#        X-Naver-Client-Secret: aQga6Td0YA
-
 api:
   keys:
     KAKAO:

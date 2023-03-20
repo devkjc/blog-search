@@ -1,6 +1,5 @@
 package com.kakao.blogsearch.search;
 
-import com.kakao.blogsearch.search.SearchSource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

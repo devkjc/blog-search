@@ -1,5 +1,6 @@
 package com.kakao.blogsearch.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kakao.blogsearch.search.SearchSource;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,7 +43,7 @@ public record BlogSearchRequest(
         if(size == 0 || size > 50) size = 10;
     }
 
-    public Pageable getPageable() {
+    public Pageable convertPageable() {
         return PageRequest.of(page - 1, size, Sort.by(sort.toString()));
     }
 }
