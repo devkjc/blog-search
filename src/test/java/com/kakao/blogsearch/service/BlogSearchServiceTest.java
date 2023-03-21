@@ -2,11 +2,13 @@ package com.kakao.blogsearch.service;
 
 import com.kakao.blogsearch.dto.BlogSearchRequest;
 import com.kakao.blogsearch.dto.BlogSearchResponse;
-import com.kakao.blogsearch.search.SearchSource;
+import com.kakao.blogsearch.search.SearchEngine;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,16 +26,16 @@ public class BlogSearchServiceTest {
 
     @Test
     void 카카오_블로그_검색() {
-        SearchSource kakao = SearchSource.KAKAO;
-        Page<BlogSearchResponse> pageBlogResponse = blogSearchService.getBlogSearchResponses(kakao, searchRequest);
-        assertThat(pageBlogResponse.isEmpty()).isFalse();
+        SearchEngine kakao = SearchEngine.KAKAO;
+        ResponseEntity<Page<BlogSearchResponse>> blogSearchResponses = blogSearchService.getBlogSearchResponses(kakao, searchRequest);
+        assertThat(blogSearchResponses.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     void 네이버_블로그_검색() {
-        SearchSource naver = SearchSource.NAVER;
-        Page<BlogSearchResponse> pageBlogResponse = blogSearchService.getBlogSearchResponses(naver, searchRequest);
-        assertThat(pageBlogResponse.isEmpty()).isFalse();
+        SearchEngine naver = SearchEngine.NAVER;
+        ResponseEntity<Page<BlogSearchResponse>> blogSearchResponses = blogSearchService.getBlogSearchResponses(naver, searchRequest);
+        assertThat(blogSearchResponses.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
 

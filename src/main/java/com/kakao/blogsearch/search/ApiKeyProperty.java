@@ -12,9 +12,9 @@ import java.util.Map;
 @ConfigurationProperties("api")
 public class ApiKeyProperty {
 
-    private final Map<SearchSource,Map<String, List<String>>> keys;
+    private final Map<SearchEngine,Map<String, List<String>>> headers;
 
-    public Map<SearchSource,Map<String, List<String>>> getKeys() {
-        return keys;
+    public Map<SearchEngine,Map<String, List<String>>> getHeaders() {
+        return headers;
     }
 }

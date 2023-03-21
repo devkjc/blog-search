@@ -3,20 +3,21 @@ package com.kakao.blogsearch.search;
 import com.kakao.blogsearch.dto.BlogSearchRequest;
 import com.kakao.blogsearch.dto.KakaoBlogSearchResponse;
 import com.kakao.blogsearch.dto.NaverBlogSearchResponse;
-import com.kakao.blogsearch.search.SearchSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @SpringBootTest
-class SearchSourceTest {
+class SearchEngineTest {
 
-    SearchSource kakao = SearchSource.KAKAO;
-    SearchSource naver = SearchSource.NAVER;
+    SearchEngine kakao = SearchEngine.KAKAO;
+    SearchEngine naver = SearchEngine.NAVER;
 
     @Test
     void webClient_생성() {
@@ -62,5 +63,16 @@ class SearchSourceTest {
 
         assertThat(kakaoResponseClass).isEqualTo(KakaoBlogSearchResponse.class);
         assertThat(naverResponseClass).isEqualTo(NaverBlogSearchResponse.class);
+    }
+
+    @Test
+    void 다른_SearchEngine_목록() {
+        //given
+        SearchEngine kakao = SearchEngine.KAKAO;
+        //when
+        List<SearchEngine> otherSearchEngines = SearchEngine.otherSearchEngines(kakao);
+        //then
+        assertThat(otherSearchEngines.contains(kakao)).isFalse();
+        assertThat(otherSearchEngines.contains(SearchEngine.NAVER)).isTrue();
     }
 }

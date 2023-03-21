@@ -1,7 +1,6 @@
 package com.kakao.blogsearch.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kakao.blogsearch.search.SearchSource;
+import com.kakao.blogsearch.search.SearchEngine;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,17 +8,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
 import java.util.Objects;
 
 @Builder
 public record BlogSearchRequest(
-        @NotBlank String query,
+        String query,
         BlogSearchSort sort,
-        @Positive @Max(value = 50) int page,
-        @Positive @Max(value = 50) int size
+        int page,
+        int size
 ) {
 
     @Getter
@@ -32,8 +28,8 @@ public record BlogSearchRequest(
         private final String naverSort;
     }
 
-    public String sort(SearchSource source) {
-        return source.equals(SearchSource.KAKAO) ? sort.name() : sort.getNaverSort();
+    public String sort(SearchEngine source) {
+        return source.equals(SearchEngine.KAKAO) ? sort.name() : sort.getNaverSort();
     }
 
     public BlogSearchRequest {

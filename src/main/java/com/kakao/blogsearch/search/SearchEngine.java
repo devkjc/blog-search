@@ -11,25 +11,30 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
 @Getter
-public enum SearchSource {
+public enum SearchEngine {
 
-    KAKAO("dapi.kakao.com/v2/search/blog", getUriBuilderKakao()),
-    NAVER("https://openapi.naver.com/v1/search/blog.json", getUriBuilderNaver()),
+    KAKAO("https://dapi.kakao.com/v2/search/blog", getUriBuilderKakao()),
+    NAVER("https://openapi.naver.com/v1/search/blog", getUriBuilderNaver()),
     ;
 
-    private final String url;
+    private final String baseUrl;
     private WebClient webClient;
     private final Function<BlogSearchRequest, MultiValueMap<String, String>> uriBuilder;
 
-    SearchSource(String url, Function<BlogSearchRequest, MultiValueMap<String, String>> uriBuilder) {
-        this.url = url;
+    SearchEngine(String baseUrl, Function<BlogSearchRequest, MultiValueMap<String, String>> uriBuilder) {
+        this.baseUrl = baseUrl;
         this.uriBuilder = uriBuilder;
+    }
+
+    public static List<SearchEngine> otherSearchEngines(SearchEngine searchEngine) {
+        return Arrays.stream(SearchEngine.values()).filter(otherEngine -> !otherEngine.equals(searchEngine)).toList();
     }
 
     public Class<?> getResponseClass() {
@@ -72,15 +77,15 @@ public enum SearchSource {
         @PostConstruct
         public void inject() {
 
-            Map<SearchSource, Map<String, List<String>>> keys = apiKeyProperty.getKeys();
+            Map<SearchEngine, Map<String, List<String>>> keys = apiKeyProperty.getHeaders();
 
-            for (SearchSource value : SearchSource.values()) {
+            for (SearchEngine value : SearchEngine.values()) {
 
                 Map<String, List<String>> keyMap = keys.get(value);
 
                 WebClient webClient =
                         WebClient.builder()
-                                .baseUrl(value.getUrl())
+                                .baseUrl(value.getBaseUrl())
                                 .defaultHeaders(httpHeaders -> {
                                     httpHeaders.putAll(keyMap);
                                 }).build();
