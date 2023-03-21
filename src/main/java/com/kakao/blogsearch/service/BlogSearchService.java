@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
@@ -23,6 +24,7 @@ public class BlogSearchService {
 
     private final PopularSearchService popularSearchService;
 
+    @Transactional
     public ResponseEntity<Page<BlogSearchResponse>> getBlogSearchResponses(SearchEngine engine, BlogSearchRequest searchRequest) {
         popularSearchService.saveAndAddCount(searchRequest.query());
 
@@ -37,7 +39,7 @@ public class BlogSearchService {
         }
 
         assert responseEntity != null;
-        return apiResponseToPage(responseEntity, searchRequest);
+        return apiResponseBodyMapPage(responseEntity, searchRequest);
     }
 
     private ResponseEntity<?> otherBlogApiCall(SearchEngine engine, BlogSearchRequest searchRequest, ResponseEntity<?> responseEntity) {
@@ -57,7 +59,7 @@ public class BlogSearchService {
                 .block();
     }
 
-    private ResponseEntity<Page<BlogSearchResponse>> apiResponseToPage(ResponseEntity<?> response, BlogSearchRequest searchRequest) {
+    private ResponseEntity<Page<BlogSearchResponse>> apiResponseBodyMapPage(ResponseEntity<?> response, BlogSearchRequest searchRequest) {
 
         Pageable pageable = searchRequest.convertPageable();
         Page<BlogSearchResponse> blogSearchResponses = null;

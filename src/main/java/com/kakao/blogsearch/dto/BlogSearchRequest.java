@@ -35,8 +35,8 @@ public record BlogSearchRequest(
     public BlogSearchRequest {
         Objects.requireNonNull(query);
         if(sort == null) sort = BlogSearchSort.ACCURACY;
-        if(page == 0 || page > 50) page = 1;
-        if(size == 0 || size > 50) size = 10;
+        if(page <= 0 || page > 50) page = 1;
+        if(size <= 0 || size > 50) size = 10;
     }
 
     public Pageable convertPageable() {

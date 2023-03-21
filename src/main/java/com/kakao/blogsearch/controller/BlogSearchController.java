@@ -10,12 +10,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
+@Validated
 @RestController
 @RequestMapping("/api/search")
 @RequiredArgsConstructor
@@ -37,6 +39,5 @@ public class BlogSearchController {
         BlogSearchRequest blogSearchRequest = new BlogSearchRequest(query, sort, page, size);
         return blogSearchService.getBlogSearchResponses(engine, blogSearchRequest);
     }
-
 
 }

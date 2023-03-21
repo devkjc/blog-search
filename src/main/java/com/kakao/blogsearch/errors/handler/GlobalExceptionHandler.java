@@ -7,21 +7,28 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Log4j2
 @RestControllerAdvice
-public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.warn("handleMethodArgumentNotValidException", e);
+        return handleExceptionInternal(e, ErrorCode.INVALID_PARAMETER);
+    }
 
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<Object> handleCustomException(final CustomException e) {
@@ -33,6 +40,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgument(final IllegalArgumentException e) {
         log.warn("handleIllegalArgument", e);
+        final ErrorCode errorCode = ErrorCode.INVALID_PARAMETER;
+        return handleExceptionInternal(errorCode, e.getMessage());
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolationException(final ConstraintViolationException e) {
         final ErrorCode errorCode = ErrorCode.INVALID_PARAMETER;
         return handleExceptionInternal(errorCode, e.getMessage());
     }
@@ -58,28 +71,39 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(errorCode);
     }
 
-    @Override
-    public ResponseEntity<Object> handleMethodArgumentNotValid(
-            final MethodArgumentNotValidException e,
-            final HttpHeaders headers,
-            final HttpStatus status,
-            final WebRequest request) {
-        log.warn("handleIllegalArgument", e);
-        final ErrorCode errorCode = ErrorCode.INVALID_PARAMETER;
-        return handleExceptionInternal(e, errorCode);
-    }
-
-    @Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ErrorCode errorCode = ErrorCode.INVALID_TYPE_VALUE;
-        return handleExceptionInternal(errorCode, ex.getMessage());
-    }
-
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleInternalException(final Exception ex) {
         log.warn("handleAllException", ex);
         final ErrorCode errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
         return handleExceptionInternal(errorCode);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<Object> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        String name = ex.getName();
+        String type = ex.getRequiredType().getSimpleName();
+        Object value = ex.getValue();
+        String message = String.format("'%s' should be a valid '%s' and '%s' isn't", name, type, value);
+        return handleExceptionInternal(ErrorCode.INVALID_TYPE_VALUE, message);
+    }
+
+    private ResponseEntity<Object> handleExceptionInternal(final BindException e, final ErrorCode errorCode) {
+        return ResponseEntity.status(errorCode.getHttpStatus())
+                .body(makeErrorResponse(e, errorCode));
+    }
+
+    private ErrorResponse makeErrorResponse(final BindException e, final ErrorCode errorCode) {
+        final List<ErrorResponse.ValidationError> validationErrorList = e.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(ErrorResponse.ValidationError::of)
+                .collect(Collectors.toList());
+
+        return ErrorResponse.builder()
+                .code(errorCode.name())
+                .message(errorCode.getMessage())
+                .errors(validationErrorList)
+                .build();
     }
 
     private ResponseEntity<Object> handleExceptionInternal(final ErrorCode errorCode) {
@@ -103,25 +127,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return ErrorResponse.builder()
                 .code(errorCode.name())
                 .message(message)
-                .build();
-    }
-
-    private ResponseEntity<Object> handleExceptionInternal(final BindException e, final ErrorCode errorCode) {
-        return ResponseEntity.status(errorCode.getHttpStatus())
-                .body(makeErrorResponse(e, errorCode));
-    }
-
-    private ErrorResponse makeErrorResponse(final BindException e, final ErrorCode errorCode) {
-        final List<ErrorResponse.ValidationError> validationErrorList = e.getBindingResult()
-                .getFieldErrors()
-                .stream()
-                .map(ErrorResponse.ValidationError::of)
-                .collect(Collectors.toList());
-
-        return ErrorResponse.builder()
-                .code(errorCode.name())
-                .message(errorCode.getMessage())
-                .errors(validationErrorList)
                 .build();
     }
 }
