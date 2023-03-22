@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'maven-publish' // maven 사용
+}
+
+group 'com.kakao.popular-search'
+version '1.0'
+
+repositories {
+    mavenLocal()
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
+
+dependencies {
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation('it.ozimov:embedded-redis:0.7.3') { exclude group: "org.slf4j", module: "slf4j-simple" }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.kakao'
+            artifactId = 'popular-search'
+            version = '1.0'
+            from components.java
+        }
+    }
+}

@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include:
+      - client
+      - popular
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 3599

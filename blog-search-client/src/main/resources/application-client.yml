@@ -1,0 +1,7 @@
+api:
+  headers:
+    KAKAO:
+      Authorization: KakaoAK 367807fafdb0b33796e4fa9b9ff24a7c
+    NAVER:
+      X-Naver-Client-Id: pUmIYo1iCMsHV4yLaAt9
+      X-Naver-Client-Secret: aQga6Td0YA

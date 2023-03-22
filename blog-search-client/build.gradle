@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'maven-publish' // maven 사용
+}
+
+group 'com.kakao.blog-search-client'
+version '1.0'
+
+repositories {
+    mavenLocal()
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    testImplementation 'com.squareup.okhttp3:mockwebserver'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.kakao'
+            artifactId = 'blog-search-client'
+            version = '1.0'
+            from components.java
+        }
+    }
+}
