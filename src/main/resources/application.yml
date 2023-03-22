@@ -17,7 +17,9 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
+  redis:
+    host: localhost
+    port: 26379
 api:
   headers:
     KAKAO:

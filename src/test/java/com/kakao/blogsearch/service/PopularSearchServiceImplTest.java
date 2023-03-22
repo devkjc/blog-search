@@ -16,27 +16,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PopularSearchServiceTest {
+class PopularSearchServiceImplTest {
 
     @Autowired
-    private PopularSearchService popularSearchService;
+    private PopularSearchServiceImpl popularSearchServiceImpl;
 
     @Autowired
     private PopularSearchRepository popularSearchRepository;
 
     String query = "검색어";
+    int max_size = 20;
 
     @BeforeAll
     void setUp() {
+
+        popularSearchRepository.deleteAll();
+
         // 검색어0 - 20
         // 검색어1 - 19
         // 검색어2 - 18
         // ...
         // 검색어18 - 2
         // 검색어19 - 1
-        for (int i = 0; i < 20; i++) {
-            for (int j = i; j < 20; j++) {
-                popularSearchService.saveAndAddCount(query + i);
+        for (int i = 0; i < max_size; i++) {
+            for (int j = i; j < max_size; j++) {
+                popularSearchServiceImpl.saveAndAddCount(query + i);
             }
         }
     }
@@ -46,7 +50,7 @@ class PopularSearchServiceTest {
         //given
         String query = "검색어";
         //when
-        popularSearchService.saveAndAddCount(query);
+        popularSearchServiceImpl.saveAndAddCount(query);
         //then
         Optional<PopularSearch> popularSearchOptional = popularSearchRepository.findByQuery(query);
 
@@ -59,9 +63,10 @@ class PopularSearchServiceTest {
     void 인기_검색어_10개_조회() {
         //given
         //when
-        List<PopularSearchResponse> top10 = popularSearchService.getPopularSearchResponse();
+        List<PopularSearchResponse> top10 = popularSearchServiceImpl.getTop10PopularSearchResponse();
         //then
         assertThat(top10.size()).isEqualTo(10);
         assertThat(top10.get(0).query()).isEqualTo(query + 0);
+        assertThat(top10.get(0).count()).isEqualTo(max_size);
     }
 }

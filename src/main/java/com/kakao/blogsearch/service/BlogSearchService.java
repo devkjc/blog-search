@@ -22,7 +22,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BlogSearchService {
 
-    private final PopularSearchService popularSearchService;
+//    private final PopularSearchServiceImpl popularSearchServiceImpl;
+    private final PopularSearchRedisServiceImpl popularSearchService;
 
     @Transactional
     public ResponseEntity<Page<BlogSearchResponse>> getBlogSearchResponses(SearchEngine engine, BlogSearchRequest searchRequest) {

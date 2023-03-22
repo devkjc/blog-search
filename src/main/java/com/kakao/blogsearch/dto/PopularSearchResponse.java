@@ -15,4 +15,11 @@ public record PopularSearchResponse(
                 .count(popularSearch.getCount())
                 .build();
     }
+
+    public static PopularSearchResponse of(String query, long count) {
+        return PopularSearchResponse.builder()
+                .query(query)
+                .count(count)
+                .build();
+    }
 }

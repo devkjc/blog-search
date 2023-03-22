@@ -42,8 +42,8 @@ public enum SearchEngine {
     }
 
     private static Function<BlogSearchRequest, MultiValueMap<String, String>> getUriBuilderKakao() {
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         return searchRequest -> {
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
             map.put("query", Collections.singletonList(searchRequest.query()));
             map.put("page", Collections.singletonList(String.valueOf(searchRequest.page())));
             map.put("size", Collections.singletonList(String.valueOf(searchRequest.size())));
@@ -53,9 +53,8 @@ public enum SearchEngine {
     }
 
     private static Function<BlogSearchRequest, MultiValueMap<String, String>> getUriBuilderNaver() {
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-
         return searchRequest -> {
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
             map.put("query", Collections.singletonList(searchRequest.query()));
             map.put("start", Collections.singletonList(String.valueOf(searchRequest.page())));
             map.put("display", Collections.singletonList(String.valueOf(searchRequest.size())));
@@ -79,18 +78,16 @@ public enum SearchEngine {
 
             Map<SearchEngine, Map<String, List<String>>> keys = apiKeyProperty.getHeaders();
 
-            for (SearchEngine value : SearchEngine.values()) {
+            Arrays.stream(SearchEngine.values()).forEach(searchEngine -> {
 
-                Map<String, List<String>> keyMap = keys.get(value);
+                Map<String, List<String>> keyMap = keys.get(searchEngine);
 
-                WebClient webClient =
-                        WebClient.builder()
-                                .baseUrl(value.getBaseUrl())
-                                .defaultHeaders(httpHeaders -> {
-                                    httpHeaders.putAll(keyMap);
-                                }).build();
-                value.setWebClient(webClient);
-            }
+                searchEngine.setWebClient(WebClient.builder()
+                        .baseUrl(searchEngine.getBaseUrl())
+                        .defaultHeaders(httpHeaders -> {
+                            httpHeaders.putAll(keyMap);
+                        }).build());
+            });
         }
     }
 }
