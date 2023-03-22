@@ -4,6 +4,7 @@ import com.kakao.blogsearch.popular.domain.PopularSearch;
 import com.kakao.blogsearch.popular.dto.PopularSearchResponse;
 import com.kakao.blogsearch.popular.repository.PopularSearchRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
@@ -21,16 +22,12 @@ public class PopularSearchRedisServiceImpl implements PopularSearchService {
     private final PopularSearchRepository popularSearchRepository;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    private final static String POPULAR_SEARCH_KEY = "popular_search";
+    @Value("${spring.redis.popular-key}")
+    private String POPULAR_SEARCH_KEY;
 
     @Override
     public void saveAndAddCount(String query) {
-        PopularSearch popularSearch = popularSearchRepository.findByQuery(query).orElseGet(() -> PopularSearch.builder().query(query).build());
-        popularSearch.addCount();
-        popularSearchRepository.save(popularSearch);
-
-        ZSetOperations<String, Object> zSetOps = redisTemplate.opsForZSet();
-        zSetOps.incrementScore(POPULAR_SEARCH_KEY, popularSearch.getQuery(), 1);
+        redisTemplate.opsForZSet().incrementScore(POPULAR_SEARCH_KEY, query, 1);
     }
 
     @Override
@@ -59,4 +56,12 @@ public class PopularSearchRedisServiceImpl implements PopularSearchService {
                 tuple.getScore() != null ? tuple.getScore().longValue() : 0);
     }
 
+    public long getPopularSearchCountFromRedis(String query) {
+        Double score = redisTemplate.opsForZSet().score(POPULAR_SEARCH_KEY, query);
+        return score != null ? score.longValue() : 0;
+    }
+
+    public long getPopularSearchCountFromH2(String query) {
+        return popularSearchRepository.findByQuery(query).map(PopularSearch::getCount).orElse(0L);
+    }
 }

@@ -17,3 +17,4 @@ spring:
   redis:
     host: localhost
     port: 26379
+    popular-key: popular_search

@@ -30,4 +30,12 @@ public class PopularSearch {
     public void addCount() {
         count++;
     }
+
+    public void setCount(long count) {
+        this.count = count;
+    }
+
+    public PopularSearch(String query) {
+        this.query = query;
+    }
 }
