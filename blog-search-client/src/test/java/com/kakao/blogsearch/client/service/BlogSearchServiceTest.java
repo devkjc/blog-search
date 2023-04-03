@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import reactor.core.publisher.Mono;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,15 +28,19 @@ public class BlogSearchServiceTest {
     @Test
     void 카카오_블로그_검색() {
         SearchEngine kakao = SearchEngine.KAKAO;
-        ResponseEntity<Page<BlogSearchResponse>> blogSearchResponses = blogSearchService.getBlogSearchResponses(kakao, searchRequest);
-        assertThat(blogSearchResponses.getStatusCode()).isEqualTo(HttpStatus.OK);
+        Mono<ResponseEntity<Page<BlogSearchResponse>>> blogSearchResponsesMono = blogSearchService.getBlogSearchResponses(kakao, searchRequest);
+        ResponseEntity<Page<BlogSearchResponse>> responseEntity = blogSearchResponsesMono.block();
+        assertThat(responseEntity).isNotNull();
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     void 네이버_블로그_검색() {
         SearchEngine naver = SearchEngine.NAVER;
-        ResponseEntity<Page<BlogSearchResponse>> blogSearchResponses = blogSearchService.getBlogSearchResponses(naver, searchRequest);
-        assertThat(blogSearchResponses.getStatusCode()).isEqualTo(HttpStatus.OK);
+        Mono<ResponseEntity<Page<BlogSearchResponse>>> blogSearchResponsesMono = blogSearchService.getBlogSearchResponses(naver, searchRequest);
+        ResponseEntity<Page<BlogSearchResponse>> responseEntity = blogSearchResponsesMono.block();
+        assertThat(responseEntity).isNotNull();
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
 

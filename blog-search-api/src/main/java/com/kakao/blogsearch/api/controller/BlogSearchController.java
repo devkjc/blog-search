@@ -30,6 +30,7 @@ public class BlogSearchController {
     private final BlogSearchService blogSearchService;
     private final PopularSearchRedisServiceImpl popularSearchService;
 
+    //TODO 비동기 처리로 어느정도 변경을 했으나 swagger response에 값이 안보여 block()으로 임시 처리.
     @GetMapping("/{engine}/blog")
     @ApiOperation(value = "블로그 검색 엔진별 조회")
     public ResponseEntity<Page<BlogSearchResponse>> searchBlog(
@@ -40,7 +41,7 @@ public class BlogSearchController {
             @PathVariable SearchEngine engine) {
         BlogSearchRequest blogSearchRequest = new BlogSearchRequest(query, sort, page, size);
         popularSearchService.saveAndAddCount(blogSearchRequest.query());
-        return blogSearchService.getBlogSearchResponses(engine, blogSearchRequest);
+        return blogSearchService.getBlogSearchResponses(engine, blogSearchRequest).block();
     }
 
 }

@@ -40,8 +40,8 @@ class SearchEngineTest {
                         .build();
 
         //when
-        MultiValueMap<String, String> kakaoHeaderMap = kakao.getUriBuilder().apply(searchRequest);
-        MultiValueMap<String, String> naverHeaderMap = naver.getUriBuilder().apply(searchRequest);
+        MultiValueMap<String, String> kakaoHeaderMap = kakao.getUriBuilder(searchRequest);
+        MultiValueMap<String, String> naverHeaderMap = naver.getUriBuilder(searchRequest);
         //then
         assertThat(kakaoHeaderMap.get("query").contains(query)).isTrue();
         assertThat(kakaoHeaderMap.get("page").contains(String.valueOf(searchRequest.page()))).isTrue();

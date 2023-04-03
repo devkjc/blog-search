@@ -39,7 +39,7 @@ public class PopularSearchRedisServiceImplConcurrencyTest extends RedisTest {
             });
         }
 
-        boolean await = latch.await(3, TimeUnit.SECONDS);
+        boolean await = latch.await(1, TimeUnit.SECONDS);
         executorService.shutdown();
 
         List<PopularSearchResponse> top10PopularSearchResponse = popularSearchService.getTop10PopularSearchResponse();

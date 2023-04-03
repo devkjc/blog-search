@@ -2,6 +2,8 @@ package com.kakao.blogsearch.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -21,6 +23,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.kakao.blogsearch"))
                 .paths(PathSelectors.any())
                 .build()
+                .genericModelSubstitutes(Mono.class, Flux.class)
                 .apiInfo(apiInfo());
     }
 
